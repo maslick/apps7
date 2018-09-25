@@ -2,12 +2,9 @@ package io.maslick.apps7;
 
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import io.maslick.apps7.pojo.Data;
 import org.junit.Test;
 
-import java.util.List;
-
-public class Testing {
+public class DummyTest {
 
     @Test
     public void superNetwork1() throws UnirestException {
@@ -17,9 +14,6 @@ public class Testing {
                 .getBody();
 
         System.out.println(csv);
-
-        List<Data> data = CsvNetLoaderSuperNetwork.processInputFile(csv);
-        System.out.println("Size: " + data.size());
     }
 
     @Test
@@ -30,9 +24,6 @@ public class Testing {
                 .getBody();
 
         System.out.println(csv);
-
-        List<Data> data = CsvNetLoaderSuperNetwork.processInputFile(csv);
-        System.out.println("Size: " + data.size());
     }
 
     @Test
@@ -43,9 +34,6 @@ public class Testing {
                 .getBody();
 
         System.out.println(csv);
-
-        List<Data> data = CsvNetLoaderAdUmbrella.processInputFile(csv);
-        System.out.println("Size: " + data.size());
     }
 
     @Test
@@ -56,8 +44,5 @@ public class Testing {
                 .getBody();
 
         System.out.println(csv);
-
-        List<Data> data = CsvNetLoaderAdUmbrella.processInputFile(csv);
-        System.out.println("Size: " + data.size());
     }
 }
