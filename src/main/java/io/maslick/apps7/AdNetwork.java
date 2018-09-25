@@ -3,8 +3,11 @@ package io.maslick.apps7;
 import io.maslick.apps7.ifaces.IFetcher;
 import io.maslick.apps7.ifaces.IParser;
 import io.maslick.apps7.ifaces.IPersister;
+import io.maslick.apps7.pojo.Data;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.List;
 
 
 public class AdNetwork {
@@ -23,7 +26,12 @@ public class AdNetwork {
     }
 
     public void run() {
-        if(date != null)
-            persister.invoke(parser.invoke(fetcher.invoke(date)));
+        if(date != null) {
+            String rawCsv = fetcher.invoke(date);
+            System.out.println(rawCsv);
+            List<Data> parsed = parser.invoke(rawCsv);
+            System.out.println(parsed.size());
+            persister.invoke(parsed);
+        }
     }
 }

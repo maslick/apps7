@@ -4,5 +4,5 @@ import io.maslick.apps7.pojo.Data;
 import java.util.List;
 
 public interface IParser {
-    List<Data> invoke(String string);
+    List<Data> invoke(String input);
 }
