@@ -2,6 +2,7 @@ package io.maslick.apps7;
 
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
+import io.maslick.apps7.pojo.Data;
 import org.junit.Test;
 
 import java.util.List;

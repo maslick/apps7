@@ -1,4 +1,4 @@
-package io.maslick.apps7;
+package io.maslick.apps7.pojo;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
