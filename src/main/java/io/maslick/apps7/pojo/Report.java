@@ -11,7 +11,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Data {
+public class Report {
     private Date date;
     private String app;
     private String platform;
@@ -22,7 +22,7 @@ public class Data {
 
     @Override
     public String toString() {
-        return "Data{" +
+        return "Report{" +
                 "date=" + new SimpleDateFormat("dd/MM/yyyy").format(date) +
                 ", app='" + app + '\'' +
                 ", platform='" + platform + '\'' +

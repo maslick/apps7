@@ -1,7 +1,9 @@
 package io.maslick.apps7.providers.superNetwork;
 
 import io.maslick.apps7.ifaces.UrlBuilder;
+import org.springframework.stereotype.Component;
 
+@Component("superNetwork2")
 public class SuperNetworkUrlBuilder extends UrlBuilder {
 
     public SuperNetworkUrlBuilder() {

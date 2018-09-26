@@ -5,6 +5,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 import io.maslick.apps7.ifaces.IFetcher;
 import io.maslick.apps7.ifaces.UrlBuilder;
 
+
 public class Fetcher implements IFetcher {
 
     private UrlBuilder urlBuilder;

@@ -1,7 +1,9 @@
 package io.maslick.apps7.providers.adUmbrella;
 
 import io.maslick.apps7.ifaces.UrlBuilder;
+import org.springframework.stereotype.Component;
 
+@Component("adUmbrella2")
 public class AdUmbrellaUrlBuilder extends UrlBuilder {
 
     public AdUmbrellaUrlBuilder() {

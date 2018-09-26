@@ -1,7 +1,8 @@
 package io.maslick.apps7.providers.adUmbrella;
 
-import io.maslick.apps7.pojo.Data;
+import io.maslick.apps7.pojo.Report;
 import io.maslick.apps7.ifaces.IParser;
+import org.springframework.stereotype.Component;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -13,15 +14,16 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+@Component("adUmbrella1")
 public class AdUmbrellaParser implements IParser {
 
     private final String COMMA = ",";
 
     @Override
-    public List<Data> invoke(String input) {
+    public List<Report> invoke(String input) {
         System.out.println("Parsing AdUmbrella...");
 
-        List<Data> list = new ArrayList<>();
+        List<Report> list = new ArrayList<>();
 
         try {
             InputStream inputFS = new ByteArrayInputStream(input.getBytes(StandardCharsets.UTF_8.name()));
@@ -37,7 +39,7 @@ public class AdUmbrellaParser implements IParser {
                     return null;
                 }
 
-                return Data.builder()
+                return Report.builder()
                         .date(date)
                         .app(split[1])
                         .platform(split[2])
