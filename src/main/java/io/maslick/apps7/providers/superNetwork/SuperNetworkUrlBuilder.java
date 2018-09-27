@@ -1,8 +1,8 @@
 package io.maslick.apps7.providers.superNetwork;
 
-import io.maslick.apps7.ifaces.UrlBuilder;
+import io.maslick.apps7.ifaces.AbstractUrlBuilder;
 
-public class SuperNetworkUrlBuilder extends UrlBuilder {
+public class SuperNetworkUrlBuilder extends AbstractUrlBuilder {
 
     public SuperNetworkUrlBuilder() {
         DATE_FORMAT = "yyyy-MM-dd"; // 2017-09-16

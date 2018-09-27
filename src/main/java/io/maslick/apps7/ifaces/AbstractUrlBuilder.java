@@ -3,7 +3,7 @@ package io.maslick.apps7.ifaces;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-public abstract class UrlBuilder {
+public abstract class AbstractUrlBuilder {
 
     protected String DATE_FORMAT = "";
     protected String URL_PREFIX = "";
