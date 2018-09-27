@@ -1,4 +1,4 @@
-package io.maslick.apps7;
+package io.maslick.apps7.service;
 
 import io.maslick.apps7.ifaces.IPersister;
 import io.maslick.apps7.pojo.Report;

@@ -1,4 +1,4 @@
-package io.maslick.apps7;
+package io.maslick.apps7.service;
 
 import io.maslick.apps7.ifaces.IFetcher;
 import io.maslick.apps7.ifaces.IParser;
@@ -28,7 +28,7 @@ public class AdNetwork {
     public void run() {
         if(date != null) {
             String rawCsv = fetcher.invoke(date);
-//            System.out.println(rawCsv);
+            System.out.println(rawCsv);
             List<Report> parsed = parser.invoke(rawCsv);
             System.out.println(parsed.size());
             persister.invoke(parsed);

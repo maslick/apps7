@@ -1,8 +1,7 @@
 package io.maslick.apps7.providers.superNetwork;
 
-import io.maslick.apps7.pojo.Report;
 import io.maslick.apps7.ifaces.IParser;
-import org.springframework.stereotype.Component;
+import io.maslick.apps7.pojo.Report;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -14,7 +13,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-@Component("superNetwork1")
 public class SuperNetworkParser implements IParser {
 
     private final String COMMA = ",";

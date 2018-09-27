@@ -1,4 +1,4 @@
-package io.maslick.apps7;
+package io.maslick.apps7.service;
 
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
