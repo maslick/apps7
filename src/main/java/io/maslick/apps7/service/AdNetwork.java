@@ -11,6 +11,7 @@ import java.util.List;
 
 
 public class AdNetwork {
+    private String network;
     private IFetcher fetcher;
     private IParser parser;
     private IPersister persister;
@@ -19,7 +20,8 @@ public class AdNetwork {
     @Setter
     private String date;
 
-    public AdNetwork(IFetcher fetcher, IParser parser, IPersister persister) {
+    public AdNetwork(String network, IFetcher fetcher, IParser parser, IPersister persister) {
+        this.network = network;
         this.fetcher = fetcher;
         this.parser = parser;
         this.persister = persister;
@@ -29,7 +31,7 @@ public class AdNetwork {
         if(date != null) {
             String rawCsv = fetcher.invoke(date); // fetch csv
             List<Report> parsed = parser.invoke(rawCsv); // parse it
-            persister.invoke(parsed); // save to db
+            persister.invoke(network, parsed); // save to db
         }
     }
 }

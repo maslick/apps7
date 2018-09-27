@@ -15,8 +15,14 @@ public class Persister implements IPersister {
     private ReportRepo repo;
 
     @Override
-    public void invoke(List<Report> data) {
-        List<Data> list = data.stream().map(report -> Data.builder()
+    public void invoke(String network, List<Report> data) {
+        if (repo.findAllByDateAndNetwork(data.get(0).getDate(), network).size() > 0) {
+            System.out.println("Report for that date is already saved");
+            return;
+        }
+
+        List<DailyReport> list = data.stream().map(report -> DailyReport.builder()
+                .network(network)
                 .date(report.getDate())
                 .app(report.getApp())
                 .platform(report.getPlatform())

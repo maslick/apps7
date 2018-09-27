@@ -16,11 +16,12 @@ import java.util.Date;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Data implements Serializable {
+public class DailyReport implements Serializable {
     @Id
     @GeneratedValue
     private Long id;
 
+    private String network;
     private Date date;
     private String app;
     private String platform;

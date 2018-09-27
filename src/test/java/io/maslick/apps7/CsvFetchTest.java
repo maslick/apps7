@@ -4,7 +4,7 @@ import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import org.junit.Test;
 
-public class DummyTest {
+public class CsvFetchTest {
 
     @Test
     public void superNetwork1() throws UnirestException {
@@ -12,7 +12,6 @@ public class DummyTest {
                 .get("https://storage.googleapis.com/expertise-test/supernetwork/report/daily/2017-09-15.csv")
                 .asString()
                 .getBody();
-
         System.out.println(csv);
     }
 
@@ -22,7 +21,6 @@ public class DummyTest {
                 .get("https://storage.googleapis.com/expertise-test/supernetwork/report/daily/2017-09-16.csv")
                 .asString()
                 .getBody();
-
         System.out.println(csv);
     }
 
@@ -32,7 +30,6 @@ public class DummyTest {
                 .get("https://storage.googleapis.com/expertise-test/reporting/adumbrella/adumbrella-15_9_2017.csv")
                 .asString()
                 .getBody();
-
         System.out.println(csv);
     }
 
@@ -42,7 +39,6 @@ public class DummyTest {
                 .get("https://storage.googleapis.com/expertise-test/reporting/adumbrella/adumbrella-16_9_2017.csv")
                 .asString()
                 .getBody();
-
         System.out.println(csv);
     }
 }

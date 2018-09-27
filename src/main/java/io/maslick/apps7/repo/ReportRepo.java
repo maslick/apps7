@@ -2,4 +2,9 @@ package io.maslick.apps7.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ReportRepo extends JpaRepository<Data, Long> {}
+import java.util.Date;
+import java.util.List;
+
+public interface ReportRepo extends JpaRepository<DailyReport, Long> {
+    List<DailyReport> findAllByDateAndNetwork(Date date, String network);
+}

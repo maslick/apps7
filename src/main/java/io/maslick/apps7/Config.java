@@ -19,6 +19,7 @@ public class Config {
     @Bean(name = "superNetwork")
     AdNetwork getSuperNetwork() {
         return new AdNetwork(
+                "superNetwork",
                 new Fetcher(new SuperNetworkUrlBuilder()),
                 new SuperNetworkParser(),
                 persister
@@ -28,6 +29,7 @@ public class Config {
     @Bean(name = "adUmbrella")
     AdNetwork getAdUmbrella() {
         return new AdNetwork(
+                "adUmbrella",
                 new Fetcher(new AdUmbrellaUrlBuilder()),
                 new AdUmbrellaParser(),
                 persister
