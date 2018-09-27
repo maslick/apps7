@@ -6,7 +6,7 @@ import io.maslick.apps7.providers.superNetwork.SuperNetworkParser;
 import io.maslick.apps7.providers.superNetwork.SuperNetworkUrlBuilder;
 import io.maslick.apps7.service.AdNetwork;
 import io.maslick.apps7.service.Fetcher;
-import io.maslick.apps7.service.Persister;
+import io.maslick.apps7.repo.Persister;
 import org.junit.Test;
 
 public class IntegrationTest {

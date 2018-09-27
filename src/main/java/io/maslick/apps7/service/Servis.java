@@ -1,25 +1,19 @@
 package io.maslick.apps7.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class Servis {
 
-    @Autowired
-    @Qualifier("superNetwork")
-    AdNetwork superNetwork;
-
-    @Autowired
-    @Qualifier("adUmbrella")
-    AdNetwork adUmbrella;
+    @Autowired List<AdNetwork> networks;
 
     public void run(String date) {
-        superNetwork.setDate(date);
-        superNetwork.run();
-
-        adUmbrella.setDate(date);
-        adUmbrella.run();
+        networks.forEach(n -> {
+            n.setDate(date);
+            n.run();
+        });
     }
 }

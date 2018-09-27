@@ -27,11 +27,9 @@ public class AdNetwork {
 
     public void run() {
         if(date != null) {
-            String rawCsv = fetcher.invoke(date);
-            System.out.println(rawCsv);
-            List<Report> parsed = parser.invoke(rawCsv);
-            System.out.println(parsed.size());
-            persister.invoke(parsed);
+            String rawCsv = fetcher.invoke(date); // fetch csv
+            List<Report> parsed = parser.invoke(rawCsv); // parse it
+            persister.invoke(parsed); // save to db
         }
     }
 }

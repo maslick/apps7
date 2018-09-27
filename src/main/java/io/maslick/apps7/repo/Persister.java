@@ -1,9 +1,7 @@
-package io.maslick.apps7.service;
+package io.maslick.apps7.repo;
 
 import io.maslick.apps7.ifaces.IPersister;
 import io.maslick.apps7.pojo.Report;
-import io.maslick.apps7.repo.Data;
-import io.maslick.apps7.repo.ReportRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +16,6 @@ public class Persister implements IPersister {
 
     @Override
     public void invoke(List<Report> data) {
-
         List<Data> list = data.stream().map(report -> Data.builder()
                 .date(report.getDate())
                 .app(report.getApp())
@@ -36,7 +33,5 @@ public class Persister implements IPersister {
             System.out.println(repo.findAll().size());
             System.out.println("SAVED TO DB!");
         }
-
-
     }
 }

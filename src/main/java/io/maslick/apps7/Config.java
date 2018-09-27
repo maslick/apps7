@@ -14,8 +14,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class Config {
     @Autowired
-    private
-    IPersister persister;
+    private IPersister persister;
 
     @Bean(name = "superNetwork")
     AdNetwork getSuperNetwork() {
