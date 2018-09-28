@@ -1,9 +1,8 @@
 package io.maslick.apps7.providers.adUmbrella;
 
-import io.maslick.apps7.ifaces.UrlBuilder;
+import io.maslick.apps7.ifaces.AbstractUrlBuilder;
 
-
-public class AdUmbrellaUrlBuilder extends UrlBuilder {
+public class AdUmbrellaUrlBuilder extends AbstractUrlBuilder {
 
     public AdUmbrellaUrlBuilder() {
         DATE_FORMAT = "dd_M_yyyy"; // 16_9_2017

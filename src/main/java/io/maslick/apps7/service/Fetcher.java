@@ -3,14 +3,14 @@ package io.maslick.apps7.service;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 import io.maslick.apps7.ifaces.IFetcher;
-import io.maslick.apps7.ifaces.UrlBuilder;
+import io.maslick.apps7.ifaces.AbstractUrlBuilder;
 
 
 public class Fetcher implements IFetcher {
 
-    private UrlBuilder urlBuilder;
+    private AbstractUrlBuilder urlBuilder;
 
-    public Fetcher(UrlBuilder urlBuilder) {
+    public Fetcher(AbstractUrlBuilder urlBuilder) {
         this.urlBuilder = urlBuilder;
     }
 
