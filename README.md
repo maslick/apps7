@@ -1,6 +1,8 @@
 # =app7=
 statistics collector for ad providers
 
+[![Build Status](https://travis-ci.org/maslick/apps7.svg?branch=master)](https://travis-ci.org/maslick/apps7)
+
 ## Features
 * easy to add new providers (implement an interface) 
 * backed by Springboot (lots of flexibility, quick integration)
