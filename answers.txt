@@ -1,22 +1,45 @@
-Problem 2: Analysing data
+-------------------------------
+# Problem 2: Analysing data
+-------------------------------
 
-* The problem with the example reports is that AdUmbrella network is using USD currency (whereas SuperNetwork uses EUR). Besides, it has an extra row at the end.
+* The problem with the example reports is that AdUmbrella network is using USD currency (whereas SuperNetwork uses EUR).
+Besides, it has an extra row at the end.
 
-* My implementation is based on the assumption that each provider has their own CSV structure. So every time we integrate a new provider, a corresponding UrlBuilder, a Parser and a Unit test shall be written. So, if something goes wrong, we run the Unit tests, see what has actually gone wrong and then take measures (we can add new validators). In fact, we can share validators between the providers. This is a general remedy. In my code I'm using a simple validator which skips the current line if any ParseException is raised.
+* My implementation is based on the assumption that each provider has their own CSV structure.
+So every time we integrate a new provider, a corresponding UrlBuilder, a Parser and a Unit test shall be written.
+So, if something goes wrong, we run the Unit tests, see what has actually gone wrong and then
+take measures (we can add new validators). In fact, we can share validators between the providers.
+This is a general remedy. In my code I'm using a simple validator which skips the current line
+if any ParseException is raised.
 
-* What could also go wrong? The order of the columns, date format, etc. All sanity checks should be covered by unit tests.
+* What could also go wrong?
+The order of the columns, date format, etc. All sanity checks should be covered by unit tests.
 
 
-Problem 3: Reliable design
-1. Occasional API failures. First, we should implement sort of a retry system [1] (somewhat resembling the Hystrix Circuit Breaker). In short: give a fair number of attempts to fetch the resource, then if still unsuccessful, open the circuit breaker. Put the unsuccessful job in a queue for later processing.
+-------------------------------
+# Problem 3: Reliable design
+-------------------------------
 
-Concurrency. Since we have 30+ providers, we can save on system resources by processing jobs concurrently (now it's done sequentially). We could leverage Vert.x together with any supported cluster manager (Ignite, Hazelcast, Zookeeper, Infinispan) by creating an event bus shared between several nodes (if necessary) in a Kubernetes cluster.
+1. Occasional API failures. First, we should implement sort of a retry system [1] (somewhat resembling
+the Hystrix Circuit Breaker). In short: give a fair number of attempts to fetch the resource, then if
+still unsuccessful, open the circuit breaker. Put the unsuccessful job in a queue for later processing.
 
-Cron jobs. We could fetch reports on a daily (weekly, monthly, yearly) basis. If that's our use-case, of course. Either having the cluster run 24/7 or deploy it regularly over night (for a short amount of time) by means of Jenkins.
+Concurrency. Since we have 30+ providers, we can save on system resources by processing jobs
+concurrently (now it's done sequentially). We could leverage Vert.x together with any supported
+cluster manager (Ignite, Hazelcast, Zookeeper, Infinispan) by creating an event bus shared
+between several nodes (if necessary) in a Kubernetes cluster.
 
-In fact we could be using the Vert.x ecosystem from the very start (distributed event bus, persistence, scaling). However, I decided to use Spring because of its quick integration capabilities (DI, persistence). Plus I am against over-engineering. In truth, nothing restricts us from using both SpringBoot and Vert.x :)
+Cron jobs. We could fetch reports on a daily (weekly, monthly, yearly) basis. If that's our use-case, of course.
+Either having the cluster run 24/7 or deploy it regularly over night (for a short amount of time) by means of Jenkins.
 
-2. GCP products. Personally, I always choose technologies that allow for maximum flexibility. Since GCP provides Kubernetes out-of-the-box, I would definitely go for Google Kubernetes Engine. Testing can be done using minikube [2] on a local machine or on-premise. Once prepared for production, the transition to GCP is seamless.
+In fact we could be using the Vert.x ecosystem from the very start (distributed event bus, persistence, scaling).
+However, I decided to use Spring because of its quick integration capabilities (DI, persistence).
+Plus I am against over-engineering. In truth, nothing restricts us from using both SpringBoot and Vert.x :)
+
+2. GCP products. Personally, I always choose technologies that allow for maximum flexibility.
+Since GCP provides Kubernetes out-of-the-box, I would definitely go for Google Kubernetes Engine.
+Testing can be done using minikube [2] on a local machine or on-premise. Once prepared for production,
+the transition to GCP is seamless.
 
 
 [1] https://martinfowler.com/bliki/CircuitBreaker.html
