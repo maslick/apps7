@@ -1,8 +1,6 @@
-# start by: docker-compose up -d db
-
 version: "2"
 services:
   rest:
     image: io.maslick/apps7
     ports:
-    - "8080"
+    - "5000:8080"
