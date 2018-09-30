@@ -1,7 +1,24 @@
-plugins {
-    id 'java'
-    id 'net.ltgt.apt' version '0.10'
+buildscript {
+    ext {
+        springBootVersion = '2.0.5.RELEASE'
+    }
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath('gradle.plugin.com.palantir.gradle.docker:gradle-docker:0.20.1')
+    }
 }
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.palantir.docker'
 
 group 'io.maslick'
 version '1.0-SNAPSHOT'
@@ -15,12 +32,19 @@ repositories {
 
 
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-
-    compileOnly 'org.projectlombok:lombok:1.18.2'
-    apt "org.projectlombok:lombok:1.18.2"
-
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    runtime('org.springframework.boot:spring-boot-devtools')
+    runtime('com.h2database:h2')
+    compileOnly('org.projectlombok:lombok')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
     compile 'com.mashape.unirest:unirest-java:1.4.9'
-    compile 'org.cactoos:cactoos:0.36'
+}
 
+docker {
+    dependsOn build
+    name "${project.group}/${bootJar.baseName}"
+    tags "1.1"
+    files bootJar.archivePath
+    buildArgs(['JAR_FILE': "${bootJar.archiveName}"])
 }

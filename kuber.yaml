@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: demo-backend
+spec:
+  selector:
+    app: apps7
+  ports:
+  - protocol: TCP
+    port: 8080
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: apps7-server
+  labels:
+    app: apps7
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: apps7
+  template:
+    metadata:
+      labels:
+        app: apps7
+    spec:
+      containers:
+      - name: apps7-server
+        image: io.maslick/apps7:1.1
+        ports:
+        - containerPort: 8080
