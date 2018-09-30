@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ReportRepo extends JpaRepository<DailyReport, Long> {
     List<DailyReport> findAllByDateAndNetwork(Date date, String network);
+    List<DailyReport> findAllByNetwork(String network);
 }

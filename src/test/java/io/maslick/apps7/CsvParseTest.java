@@ -26,7 +26,14 @@ public class CsvParseTest {
         Assert.assertEquals(199, list.size());
     }
 
-    public String getCsv(String fileName) {
+    @Test
+    public void testCorruptReport() {
+        List<Report> list = new AdUmbrellaParser().invoke(getCsv("corrupt.csv"));
+        list.forEach(System.out::println);
+        Assert.assertEquals(5, list.size());
+    }
+
+    private String getCsv(String fileName) {
         ClassLoader classLoader = CsvParseTest.class.getClassLoader();
         InputStream resourceAsStream = classLoader.getResourceAsStream(fileName);
 
