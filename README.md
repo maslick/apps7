@@ -12,7 +12,6 @@ statistics collector for ad providers
 * Process jobs concurrently (leverage vert.x)
 * Scale up the Kubernetes cluster (30+ providers)
 * Handle failed jobs
-* Generate reports
 * Add an HTML5 client (dashboard)
 
 ## Installation
@@ -30,6 +29,7 @@ Fire a POST request on the client:
 ```
 $ curl -X POST -d "date=15.09.2017" http://localhost:8080/fetchData
 ```
+This will fetch reports for all the registered adProviders and save them to the database. Already saved reports will be discarded.
 
 For test purposes one can use the h2 web-console (leave default settings):
 ```
