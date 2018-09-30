@@ -4,7 +4,10 @@ import io.maslick.apps7.pojo.Report;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
@@ -14,6 +17,10 @@ public class AbstractParser implements IParser {
     private final String COMMA = ",";
 
     protected Function<String[], Report> lambda;
+
+    protected Date parseDate(String string) throws ParseException {
+        return new SimpleDateFormat("dd/MM/yyyy").parse(string);
+    }
 
     @Override
     public List<Report> invoke(String input) {

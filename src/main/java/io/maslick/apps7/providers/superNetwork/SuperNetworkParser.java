@@ -4,8 +4,6 @@ import io.maslick.apps7.ifaces.AbstractParser;
 import io.maslick.apps7.pojo.Report;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class SuperNetworkParser extends AbstractParser {
 
@@ -14,9 +12,8 @@ public class SuperNetworkParser extends AbstractParser {
     public SuperNetworkParser() {
         this.lambda = split -> {
             try {
-                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(split[0]);
                 return Report.builder()
-                        .date(date)
+                        .date(parseDate(split[0]))
                         .app(split[1])
                         .platform(split[2])
                         .requests(Integer.valueOf(split[3]))

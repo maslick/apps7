@@ -4,17 +4,14 @@ import io.maslick.apps7.ifaces.AbstractParser;
 import io.maslick.apps7.pojo.Report;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class AdUmbrellaParser extends AbstractParser {
 
     public AdUmbrellaParser() {
         this.lambda = split -> {
             try {
-                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(split[0]);
                 return Report.builder()
-                        .date(date)
+                        .date(parseDate(split[0]))
                         .app(split[1])
                         .platform(split[2])
                         .requests(Integer.valueOf(split[3]))
@@ -22,7 +19,7 @@ public class AdUmbrellaParser extends AbstractParser {
                         .revenue(Double.valueOf(split[5]))
                         .currency("usd")
                         .build();
-            } catch (ParseException e) {
+            } catch (ParseException | NumberFormatException e) {
                 e.printStackTrace();
                 return null;
             }
