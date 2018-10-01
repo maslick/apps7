@@ -14,8 +14,8 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 
 public class AbstractParser implements IParser {
-    private final String COMMA = ",";
 
+    private final String COMMA = ",";
     protected Function<String[], Report> lambda;
 
     protected Date parseDate(String string) throws ParseException {
@@ -23,8 +23,7 @@ public class AbstractParser implements IParser {
     }
 
     @Override
-    public List<Report> invoke(String input) {
-
+    public List<Report> run(String input) {
         List<Report> list = new ArrayList<>();
 
         try {
@@ -34,7 +33,6 @@ public class AbstractParser implements IParser {
             list = br.lines().skip(1).map(line -> lambda.apply(line.split(COMMA)))
                     .filter(Objects::nonNull)
                     .collect(Collectors.toList());
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

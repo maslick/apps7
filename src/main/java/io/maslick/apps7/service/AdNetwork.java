@@ -12,11 +12,11 @@ import java.util.List;
 
 
 public class AdNetwork {
-    private String network;
-    private IFetcher fetcher;
-    private IParser parser;
-    private IPersister persister;
-    private IValidator validator;
+    private final String network;
+    private final IFetcher fetcher;
+    private final IParser parser;
+    private final IPersister persister;
+    private final IValidator validator;
 
     @Getter
     @Setter
@@ -33,9 +33,9 @@ public class AdNetwork {
     public void run() {
         if(date != null) {
             if (validator.isOk(network, date, "")) {                    // validate
-                String rawCsv = fetcher.invoke(date);                   // fetch csv
-                List<Report> parsed = parser.invoke(rawCsv);            // parse it
-                persister.invoke(network, parsed);                      // save to db
+                String rawCsv = fetcher.download(date);                 // fetch csv
+                List<Report> parsed = parser.run(rawCsv);               // parse it
+                persister.save(network, parsed);                        // save to db
             }
         }
     }

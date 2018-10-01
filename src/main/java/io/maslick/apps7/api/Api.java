@@ -13,7 +13,6 @@ public class Api {
 
     @PostMapping("/fetchData")
     public String fetch(@RequestParam String date) {
-        System.out.println(date);
         servis.run(date);
         return "OK";
     }

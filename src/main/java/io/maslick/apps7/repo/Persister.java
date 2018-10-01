@@ -20,7 +20,7 @@ public class Persister implements IPersister {
     private Logger logger = LoggerFactory.getLogger(ValidatorAlreadySaved.class);
 
     @Override
-    public void invoke(String network, List<Report> data) {
+    public void save(String network, List<Report> data) {
         List<DailyReport> list = data.stream().map(report ->
                 DailyReport.builder()
                         .network(network)

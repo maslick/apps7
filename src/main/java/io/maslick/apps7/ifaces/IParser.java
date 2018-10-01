@@ -4,5 +4,5 @@ import io.maslick.apps7.pojo.Report;
 import java.util.List;
 
 public interface IParser {
-    List<Report> invoke(String input);
+    List<Report> run(String input);
 }

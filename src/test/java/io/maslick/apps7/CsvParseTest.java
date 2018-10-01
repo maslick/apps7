@@ -14,21 +14,21 @@ public class CsvParseTest {
 
     @Test
     public void superNetwork() {
-        List<Report> list = new SuperNetworkParser().invoke(getCsv("2017-09-16.csv"));
+        List<Report> list = new SuperNetworkParser().run(getCsv("2017-09-16.csv"));
         list.forEach(System.out::println);
         Assert.assertEquals(199, list.size());
     }
 
     @Test
     public void adUmbrella() {
-        List<Report> list = new AdUmbrellaParser().invoke(getCsv("adumbrella-16_9_2017.csv"));
+        List<Report> list = new AdUmbrellaParser().run(getCsv("adumbrella-16_9_2017.csv"));
         list.forEach(System.out::println);
         Assert.assertEquals(199, list.size());
     }
 
     @Test
     public void testCorruptReport() {
-        List<Report> list = new AdUmbrellaParser().invoke(getCsv("corrupt.csv"));
+        List<Report> list = new AdUmbrellaParser().run(getCsv("corrupt.csv"));
         list.forEach(System.out::println);
         Assert.assertEquals(5, list.size());
     }

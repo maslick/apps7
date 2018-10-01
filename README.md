@@ -5,7 +5,7 @@ statistics collector for ad providers
 
 ## Features
 * easy to add new providers (implement an interface) 
-* backed by Springboot (lots of flexibility, quick integration)
+* backed by Springboot (more flexibility, quick integration)
 * comes with Docker configuration (Dockerfile, docker-compose, Kubernetes)
 
 ## TO-DO list

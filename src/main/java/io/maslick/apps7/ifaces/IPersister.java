@@ -4,5 +4,5 @@ import io.maslick.apps7.pojo.Report;
 import java.util.List;
 
 public interface IPersister {
-    void invoke(String network, List<Report> data);
+    void save(String network, List<Report> data);
 }

@@ -18,7 +18,7 @@ public class Fetcher implements IFetcher {
     }
 
     @Override
-    public String invoke(String url) {
+    public String download(String url) {
         logger.info("Fetching from url: " + urlBuilder.build(url));
 
         try {
