@@ -1,15 +1,15 @@
 package io.maslick.apps7.api;
 
 import io.maslick.apps7.service.Servis;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequiredArgsConstructor
 public class Api {
-    @Autowired
-    private Servis servis;
+    private final Servis servis;
 
     @PostMapping("/fetchData")
     public String fetch(@RequestParam String date) {

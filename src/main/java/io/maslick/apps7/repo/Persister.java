@@ -3,20 +3,18 @@ package io.maslick.apps7.repo;
 import io.maslick.apps7.ifaces.IPersister;
 import io.maslick.apps7.pojo.Report;
 import io.maslick.apps7.service.ValidatorAlreadySaved;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
+@RequiredArgsConstructor
 public class Persister implements IPersister {
-
-    @Autowired
-    private ReportRepo repo;
-
+    private final ReportRepo repo;
     private Logger logger = LoggerFactory.getLogger(ValidatorAlreadySaved.class);
 
     @Override

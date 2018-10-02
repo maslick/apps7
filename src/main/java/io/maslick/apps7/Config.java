@@ -8,17 +8,15 @@ import io.maslick.apps7.providers.superNetwork.SuperNetworkParser;
 import io.maslick.apps7.providers.superNetwork.SuperNetworkUrlBuilder;
 import io.maslick.apps7.service.AdNetwork;
 import io.maslick.apps7.service.Fetcher;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
+@RequiredArgsConstructor
 public class Config {
-    @Autowired
-    private IPersister persister;
-
-    @Autowired
-    private IValidator validator;
+    private final IPersister persister;
+    private final IValidator validator;
 
     @Bean(name = "superNetwork")
     AdNetwork getSuperNetwork() {
